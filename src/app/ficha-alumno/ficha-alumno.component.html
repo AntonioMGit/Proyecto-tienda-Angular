@@ -1,0 +1,63 @@
+<div>
+    <h1>{{mensaje}}</h1>
+    <h2>Ficha alumno</h2>
+    <div>
+        <p>{{alumno.nif}}</p>
+        <p>{{alumno.nombre}}</p>
+        <p>{{alumno.apellidos}}</p>
+        <p>{{alumno.correo}}</p>
+    </div>
+</div>
+<div>
+    <div>
+        <label for="nif">NIF: </label>
+        <input id="nif" type="text" [(ngModel)]="nif">
+        <span>{{nif}}</span>
+    </div>
+    <div>
+        <label for="nombre">nombre: </label>
+        <input id="nombre" type="text" [(ngModel)]="nombre">
+        <span>{{nombre}}</span>
+    </div>
+    <div>
+        <label for="apellidos">apellidos: </label>
+        <input id="apellidos" type="text" [(ngModel)]="apellidos">
+        <span>{{apellidos}}</span>
+    </div>
+    <div>
+        <button (click)="crearAlumno()">Crear alumno</button>
+        <button (click)="borrarAlumnos()">Borrar alumnos</button>
+        <div>
+            <span>ancho tabla %</span>
+            <input type="range" min="20" max="100" [(ngModel)]="anchoTabla">
+        </div>
+    </div>
+</div>
+<div>
+    <table *ngIf="listaAlumnos.length>0" [style.width.%]="anchoTabla">
+        <thead>
+            <tr>
+                <td>nif</td>
+                <td>nombre</td>
+                <td>apellidos</td>
+                <td>correo</td>
+                <td>telefono</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alumno of listaAlumnos; index as indice"
+                (click)="filaPulsada(indice)"
+                [class.seleccionado]="alumnoSeleccionado==indice"
+            >
+                <td>{{alumno.nif}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellidos}}</td>
+                <td>{{alumno.correo}}</td>
+                <td>{{alumno.telefono}}</td>
+                <td>
+                    <button (click)="borrarAlumno(alumno.nif)">Borrar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

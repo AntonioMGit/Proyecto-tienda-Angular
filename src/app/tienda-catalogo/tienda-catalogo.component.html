@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-6 my-2" *ngFor="let producto of catalogo">
+        <div class="card shadow">
+            <h5 class="card-header">{{producto.nombre | uppercase}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{producto.descripcion}}</p>
+                <p>precio: {{producto.precioUnidad | number:'0.2-2'}}€</p>
+                <a class="btn btn-primary me-4" [routerLink]="['/producto',producto.id]">Ver ficha</a>
+                <a [class.disabled]="!producto.disponible" 
+                    class="btn btn-primary"
+                    (click)="comprarProducto(producto)">Comprar</a>
+            </div>
+        </div>
+    </div>
+</div>

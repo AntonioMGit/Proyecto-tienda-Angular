@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <app-tienda-filtro [catalogo]="catalogoProductos" 
+                [datosCompartidos]="datosCompartidos"
+            >
+            </app-tienda-filtro>
+        </div>
+        <div class="col-7">
+            <app-tienda-catalogo 
+            [catalogo]="datosCompartidos.catalogoFiltrado"
+            [carrito]="datosCompartidos.carrito"
+            ></app-tienda-catalogo>
+        </div>
+        <div class="col-3">
+            <app-tienda-carrito
+            [carrito]="datosCompartidos.carrito"></app-tienda-carrito>
+        </div>
+    </div>
+</div>
